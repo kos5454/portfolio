@@ -1,5 +1,3 @@
-
-
 // Gestion du loader
 window.addEventListener('load', function() {
     setTimeout(function() {
@@ -8,18 +6,18 @@ window.addEventListener('load', function() {
         setTimeout(function() {
             document.getElementById('loader').style.display = 'none';
         }, 1250);
-    }, 0000);
+    }, 0000); // Vous pouvez augmenter ce délai pour voir l'écran de chargement plus longtemps
 });
 
-// gestions du bouttons chargements 
+// Gestion du bouton de chargement 
 document.addEventListener('DOMContentLoaded', function() {
     const loading = document.getElementById('loading');
     
-    // Simuler un chargement qui dure 5 secondes
+    // Simuler un chargement qui dure quelques secondes
     setTimeout(function() {
       loading.classList.add('hidden');
-    }, 0000);
-  });
+    }, 0000); // Vous pouvez augmenter ce délai pour voir l'animation plus longtemps
+});
 
 // Fonction pour afficher les onglets
 function afficherTab(tabId) {
@@ -43,9 +41,21 @@ function afficherTab(tabId) {
     if (boutonActif) {
         boutonActif.classList.add('active');
     }
+    
+    // Faire défiler jusqu'au contenu de l'onglet sur mobile
+    if (window.innerWidth <= 768) {
+        document.querySelector('.contenu-container').scrollIntoView({
+            behavior: 'smooth'
+        });
+    }
 }
 
 // Afficher le premier onglet par défaut au chargement
 window.addEventListener('DOMContentLoaded', function() {
     afficherTab('tab1');
+    
+    // Gestion du redimensionnement
+    window.addEventListener('resize', function() {
+        // Vous pouvez ajouter des ajustements spécifiques ici si nécessaire
+    });
 });
