@@ -1,6 +1,7 @@
 /* Styles de base */
+
 body {
-    margin: 0;      
+    margin: 0;
     padding: 0;
     min-height: 100vh;
     display: flex;
@@ -10,19 +11,19 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+    position: relative; /* Ajout pour positionner l'image et le titre absolument par rapport au body */
 }
 
 /* Style de la bande noire */
 .bande-noire {
-    background-color: rgba(7, 5, 5, 0.8); 
+    background-color: rgba(7, 5, 5, 1);
     display: flex;
-    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne sur petit écran */
     justify-content: space-evenly;
     align-items: center;
     width: 90%; /* Largeur adaptée */
-    margin: 80px auto 20px; /* Ajusté pour mobile */
     padding: 5px;
     border-radius: 5px;
+    margin: 130px auto 20px; /* Augmente l'espace au-dessus */
 }
 
 /* Style des boutons */
@@ -39,19 +40,15 @@ body {
     overflow: hidden;
 }
 
-.bande-noire .bouton.experience-pro {
-    font-size: 0.6em;
-}
 
 /* Animation au hover */
 .bouton:hover {
-    color: #00eeff;
+    color: #00f7ff;
     font-size: 15px;
-    background: linear-gradient(45deg, #ff0000, #ff7300, #ffeb00, #00ff22, #00ffee, #002bff, #7a00ff, #ff00eb);
+    background-color: transparent;
     border: 1px solid white;
-    background-size: 400% 400%;
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-    transition: all 1s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
 /* Séparateurs blancs */
@@ -85,43 +82,47 @@ body {
 
 /* Titre du portfolio */
 .portfolio-title {
-    position: relative;
-    width: 100%;
-    text-align: center;
-    top: 40px;
-    left: 0;
-    transform: none;
+    position: absolute;
+    top: 100px; /* Position ajustée */
+    left: 125px;
+    transform: translateX(-50%);
     font-size: 28px;
     font-weight: bold;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    margin-bottom: 10px;
+    margin-bottom: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 1; /* Assure qu'il est au-dessus des autres éléments */
 }
 
 /* Image */
 .image-container {
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: center;
+    position: absolute;
+    top: 37px; /* Position au sommet de l'écran */
+    right: -20px; /* Position à droite de l'écran */
+    width: auto; /* Ajustement automatique de la largeur */
+    height: auto; /* Ajustement automatique de la hauteur */
+    display: block;
+    z-index: 1; /* Assure qu'il est au-dessus des autres éléments */
 }
 
 .image-au-dessus {
-    position: absolute;
-    top: -60px;
-    width: 45px;
-    height: 50px;
+    width: 65px;
+    height: 70px;
+    margin-right: 77px; /* Marge depuis la droite */
     object-fit: contain;
 }
 
 /* Styles pour le contenu des onglets */
 .contenu-container {
     width: 90%;
+    margin-top: 500px;
     margin: 0 auto 20px;
     background-color: rgba(0, 0, 0, 0.7);
     padding: 15px;
     color: white;
-    border-radius: 5px;
+    border-radius: 35px;
 }
 
 .contenu-tab {
@@ -153,6 +154,7 @@ body {
 .telephone { color: #33CCFF; }
 .house { color: #3399FF; }
 .voiture { color: #0066FF; }
+.heart { color: #00FF00;}
 
 /* Bouton de chargement */
 .loading-spinner {
@@ -235,32 +237,25 @@ body {
         flex-direction: column;
         padding: 5px 0;
     }
-    
+
     .bouton {
         width: 90%;
         margin: 5px 0;
         padding: 8px 0;
         font-size: 14px;
     }
-    
-    .bande-noire .bouton.experience-pro {
-        font-size: 14px;
-    }
-    
-    .bouton:hover {
-        font-size: 15px;
-    }
-    
+
+
     .contenu-container {
         width: 95%;
         padding: 10px;
     }
-    
+
     .contenu-tab iframe {
         width: 100%;
         height: 300px;
     }
-    
+
     .portfolio-title {
         font-size: 24px;
         top: 20px;
@@ -273,20 +268,194 @@ body {
         font-size: 22px;
         top: 15px;
     }
-    
+
+
+    .portfolio-title {
+        position: absolute;
+        top: 10px; /* Position ajustée */
+        left: 132px;
+        transform: translateX(-50%);
+        font-size: 28px;
+        font-weight: bold;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        margin-bottom: 0;
+        width: 100%;
+        text-align: center;
+        z-index: 1; /* Assure qu'il est au-dessus des autres éléments */
+    }
+
+
     .bouton {
         font-size: 12px;
     }
-    
+
     .contenu-tab h2 {
         font-size: 18px;
     }
-    
+
     .contenu-tab p {
         font-size: 13px;
     }
-    
+
     .contenu-tab iframe {
         height: 250px;
     }
+
+}
+
+  .image-container {
+    display: flex;
+    gap: 20px; /* Espacement entre les cases */
+    margin: 20px; /* Marge autour du conteneur */
+    justify-content: space-between; /* Place la première image à gauche et la deuxième à droite */
+
+}
+
+.image-card {
+    border: 2px solid rgb(0, 221, 255)#000; /* Bordure autour de la case */
+    border-radius: 10px; /* Coins arrondis de la case */
+    padding: 10px; /* Espacement intérieur de la case */
+    width: 200px; /* Largeur de chaque case */
+    text-align: center; /* Centre le texte sous l'image */
+    background-color: tra; /* Fond clair pour la case */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre subtile autour de la case */
+    margin-right: 500px;
+
+}
+
+.zoom-image {
+
+    width: 250px; /* L'image prend toute la largeur de la case */
+    height: 134px;
+    border-radius: 20px; /* Coins arrondis pour l'image */
+    transition: transform 1s ease-in-out;
+}
+
+.zoom-image:hover {
+    transform: scale(4) translateX(70%) /* Zoom et déplace l'image */
+
+}
+
+l
+.image-text {
+    margin-top: 10px; /* Espacement entre l'image et le texte */
+    font-size: 16px;
+    color: white; /* Couleur du texte */
+}
+
+.text-swiper {
+    width: 100%; /* Prend toute la largeur */
+    overflow: hidden; /* Cache le texte hors de la zone visible */
+    white-space: nowrap; /* Empêche le texte de revenir à la ligne */
+    position: relative;
+    background: transparent; /* Fond sombre */
+    color: #fff; /* Texte blanc */
+    font-size: 20px;
+    padding: 10px 0;
+}
+
+.text-swiper p {
+    display: inline-block;
+    padding-left: 100%; /* Commence hors de l'écran */
+    animation: swipeText 15s linear infinite;
+}
+
+@keyframes swipeText {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+
+.contact-form {
+    background-color: transparent;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.7 );
+}
+.form-group {
+    margin-bottom: 1rem;
+}
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    
+}
+input, textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.submit-btn {
+    background-color: #007bff;
+    color: rgb(0, 255, 251);
+    border: none;
+    padding: 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+.submit-btn:hover {
+    background-color: #0056b3;
+}
+
+.margin-top{
+    height: 50px;
+    width: 50px;
+}
+
+
+/* Ajoutez ces styles à votre fichier styles.css */
+.image-link-container {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.image-link-container img {
+    width: 50px;  /* Largeur fixe */
+    height: 50px;  /* Hauteur proportionnelle */
+    max-width: 100%;  /* S'assure que l'image ne dépasse pas la largeur du conteneur */
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.image-link-container img:hover {
+    transform: scale(1.1);  /* Effet de zoom au survol */
+}
+
+/* Styles for active tab button */
+.bouton-active {
+    background-color: #00f7ff;
+    color: black !important;
+    border: 2px solid #00f7ff;
+    box-shadow: 0 0 10px rgba(0, 247, 255, 0.7);
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
+
+/* Additional styles for different tabs */
+#tab1 .contenu-tab h2 { color: #00FF00; }
+#tab2 .contenu-tab h2 { color: #FF6347; }
+#tab3 .contenu-tab h2 { color: #1E90FF; }
+#tab4 .contenu-tab h2 { color: #FFD700; }
+#tab5 .contenu-tab h2 { color: #FF4500; }
+#tab6 .contenu-tab h2 { color: #00CED1; }
+
+/* Specific background for tab5 */
+#tab5 {
+    background-color: rgba(255, 69, 0, 0.2);
+    border-radius: 15px;
+    padding: 15px;
+}
+
+#tab5 {
+    background-color: transparent; 
+    border-radius: 15px;
+    padding: 15px;
 }
