@@ -30,7 +30,7 @@ function afficherTab(tabId) {
     // Retirer la classe active de tous les boutons
     var boutons = document.getElementsByClassName('bouton');
     for (var i = 0; i < boutons.length; i++) {
-        boutons[i].classList.remove('active');
+        boutons[i].classList.remove('bouton-active');
     }
     
     // Afficher l'onglet sélectionné
@@ -39,7 +39,7 @@ function afficherTab(tabId) {
     // Ajouter la classe active au bouton cliqué
     var boutonActif = document.querySelector('.bouton[href="#' + tabId + '"]');
     if (boutonActif) {
-        boutonActif.classList.add('active');
+        boutonActif.classList.add('bouton-active');
     }
     
     // Faire défiler jusqu'au contenu de l'onglet sur mobile
@@ -53,9 +53,4 @@ function afficherTab(tabId) {
 // Afficher le premier onglet par défaut au chargement
 window.addEventListener('DOMContentLoaded', function() {
     afficherTab('tab1');
-    
-    // Gestion du redimensionnement
-    window.addEventListener('resize', function() {
-        // Vous pouvez ajouter des ajustements spécifiques ici si nécessaire
-    });
 });
