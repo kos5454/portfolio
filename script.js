@@ -1,56 +1,55 @@
-// Gestion du loader
-window.addEventListener('load', function() {
-    setTimeout(function() {
-        document.getElementById('loader').style.opacity = '0';
-        
-        setTimeout(function() {
-            document.getElementById('loader').style.display = 'none';
-        }, 1250);
-    }, 0000); // Vous pouvez augmenter ce délai pour voir l'écran de chargement plus longtemps
+// 📌 Gestion du loader (écran de chargement)
+window.addEventListener('load', function() { // Attendre que toute la page soit chargée
+    setTimeout(function() { // Délai avant de commencer à masquer le loader
+        document.getElementById('loader').style.opacity = '0'; // Rendre le loader progressivement invisible
+
+        setTimeout(function() { // Attendre encore un peu avant de le supprimer complètement
+            document.getElementById('loader').style.display = 'none'; // Cacher totalement l'élément pour qu'il ne prenne plus de place
+        }, 1250); // Temps d'attente après l'op785*4acité 0 (1.25s)
+    }, 0000); // Délai initial avant de commencer l'animation (actuellement 0 ms)
 });
 
-// Gestion du bouton de chargement 
-document.addEventListener('DOMContentLoaded', function() {
-    const loading = document.getElementById('loading');
-    
-    // Simuler un chargement qui dure quelques secondes
-    setTimeout(function() {
-      loading.classList.add('hidden');
-    }, 0000); // Vous pouvez augmenter ce délai pour voir l'animation plus longtemps
+// 📌 Gestion du bouton de chargement
+document.addEventListener('DOMContentLoaded', function() { // Exécuter quand le HTML est chargé (avant les images)
+    const loading = document.getElementById('loading'); // Récupérer l'élément #loading
+
+    setTimeout(function() { // Attendre un certain temps avant de cacher le bouton
+        loading.classList.add('hidden'); // Ajouter la classe CSS 'hidden' (qui masque l'élément)
+    }, 0000); // Délai avant de masquer le bouton (actuellement 0 ms)
 });
 
-// Fonction pour afficher les onglets
-function afficherTab(tabId) {
-    // Cacher tous les onglets
-    var tabs = document.getElementsByClassName('contenu-tab');
-    for (var i = 0; i < tabs.length; i++) {
-        tabs[i].classList.remove('active');
+// 📌 Fonction pour afficher les onglets
+function afficherTab(tabId) { // Fonction qui affiche un onglet selon son ID
+    // 🔹 Cacher tous les onglets
+    var tabs = document.getElementsByClassName('contenu-tab'); // Sélectionner tous les onglets
+    for (var i = 0; i < tabs.length; i++) { // Boucler sur tous les onglets
+        tabs[i].classList.remove('active'); // Retirer la classe 'active' pour les masquer
     }
-    
-    // Retirer la classe active de tous les boutons
-    var boutons = document.getElementsByClassName('bouton');
-    for (var i = 0; i < boutons.length; i++) {
-        boutons[i].classList.remove('bouton-active');
+
+    // 🔹 Désélectionner tous les boutons
+    var boutons = document.getElementsByClassName('bouton'); // Sélectionner tous les boutons d'onglet
+    for (var i = 0; i < boutons.length; i++) { // Boucler sur tous les boutons
+        boutons[i].classList.remove('bouton-active'); // Retirer la classe 'bouton-active'
     }
-    
-    // Afficher l'onglet sélectionné
-    document.getElementById(tabId).classList.add('active');
-    
-    // Ajouter la classe active au bouton cliqué
-    var boutonActif = document.querySelector('.bouton[href="#' + tabId + '"]');
-    if (boutonActif) {
-        boutonActif.classList.add('bouton-active');
+
+    // 🔹 Afficher l'onglet sélectionné
+    document.getElementById(tabId).classList.add('active'); // Ajouter la classe 'active' à l'onglet cliqué
+
+    // 🔹 Mettre en surbrillance le bouton correspondant
+    var boutonActif = document.querySelector('.bouton[href="#' + tabId + '"]'); // Trouver le bouton lié à l'onglet
+    if (boutonActif) { // Vérifier si le bouton existe
+        boutonActif.classList.add('bouton-active'); // Ajouter la classe 'bouton-active'
     }
-    
-    // Faire défiler jusqu'au contenu de l'onglet sur mobile
-    if (window.innerWidth <= 768) {
-        document.querySelector('.contenu-container').scrollIntoView({
-            behavior: 'smooth'
+
+    // 🔹 Sur mobile, faire défiler la page jusqu'au contenu
+    if (window.innerWidth <= 1768) { // Vérifier si la largeur de l'écran est de 768px ou moins (mobile/tablette)
+        document.querySelector('.contenu-container').scrollIntoView({ // Faire défiler jusqu'au contenu des onglets
+            behavior: 'smooth' // Effet de défilement fluide
         });
     }
 }
 
-// Afficher le premier onglet par défaut au chargement
-window.addEventListener('DOMContentLoaded', function() {
-    afficherTab('tab1');
+// 📌 Afficher le premier onglet par défaut au chargement de la page
+window.addEventListener('DOMContentLoaded', function() { // Quand le HTML est chargé
+    afficherTab('tab1'); // Afficher automatiquement l'onglet avec l'ID 'tab1'
 });
