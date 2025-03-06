@@ -6,7 +6,7 @@ window.addEventListener('load', function() { // Attendre que toute la page soit 
         setTimeout(function() { // Attendre encore un peu avant de le supprimer complètement
             document.getElementById('loader').style.display = 'none'; // Cacher totalement l'élément pour qu'il ne prenne plus de place
         }, 1250); // Temps d'attente après l'op785*4acité 0 (1.25s)
-    }, 0000); // Délai initial avant de commencer l'animation (actuellement 0 ms)
+    }, 4000); // Délai initial avant de commencer l'animation (actuellement 0 ms)
 });
 
 // 📌 Gestion du bouton de chargement
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() { // Exécuter quand le
 
     setTimeout(function() { // Attendre un certain temps avant de cacher le bouton
         loading.classList.add('hidden'); // Ajouter la classe CSS 'hidden' (qui masque l'élément)
-    }, 0000); // Délai avant de masquer le bouton (actuellement 0 ms)
+    }, 4000); // Délai avant de masquer le bouton (actuellement 0 ms)
 });
 
 // 📌 Fonction pour afficher les onglets
